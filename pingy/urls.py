@@ -24,5 +24,4 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('panel/', views.user_panel_view, name='user_panel'),
     path('delete/<int:site_id>/', views.delete_url_view, name='delete_url'),
-
 ]

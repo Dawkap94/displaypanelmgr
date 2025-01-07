@@ -9,10 +9,6 @@ def index(request):
 
 @login_required
 def user_panel_view(request):
-    """
-    - GET: Wyświetla panel użytkownika wraz z listą adresów URL przypisanych do aktualnego usera.
-    - POST: Dodaje nowy adres URL wprowadzony w formularzu, po czym odświeża stronę.
-    """
     if request.method == 'POST':
         address = request.POST.get('address')
         if address:
@@ -31,10 +27,6 @@ def user_panel_view(request):
 
 @login_required
 def delete_url_view(request, site_id):
-    """
-    Usuwa wybrany rekord (UrlMonitor) należący do zalogowanego użytkownika,
-    a następnie przekierowuje do panelu.
-    """
     site = get_object_or_404(Website, id=site_id, owner=request.user)
     site.delete()
     return redirect('user_panel')

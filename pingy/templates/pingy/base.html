@@ -5,7 +5,7 @@
     <meta charset="utf-8"/>
     <title>{% block title %}Moja aplikacja{% endblock %}</title>
     <!-- Przykładowy plik CSS -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'pingy/css/styles.css' %}">
 </head>
 <body>
 
@@ -22,18 +22,10 @@
                     <li><a href="{% url 'login' %}">Zaloguj</a></li>
                     <li><a href="{% url 'register' %}">Zarejestruj</a></li>
                 {% endif %}
-                <!-- Możesz dodać link do strony głównej czy innej:
-                     <li><a href="{% url 'index' %}">Strona główna</a></li>
                 -->
             </ul>
         </nav>
     </header>
-
-    <!-- Blok na treść stron dziedziczących -->
-    <main>
-        {% block content %}
-        {% endblock content %}
-    </main>
 
     <footer>
         <p>&copy; 2025 - Pingy</p>
