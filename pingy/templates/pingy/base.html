@@ -16,7 +16,7 @@
                 {% if user.is_authenticated %}
                     <p>Zalogowany jako: {{ user.email }}</p>
                     <a href="{% url 'logout' %}">Wyloguj</a>
-                    <li><a href="{% url 'index' %}">Panel użytkownika - nie działa</a></li>
+                    <li><a href="{% url 'user_panel' %}">Panel użytkownika - nie działa</a></li>
                 {% else %}
                     <p>Niezalogowany</p>
                     <li><a href="{% url 'login' %}">Zaloguj</a></li>

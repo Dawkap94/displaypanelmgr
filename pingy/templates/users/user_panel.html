@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User panel</title>
+</head>
+<body>
+<h1>User panel</h1>
+
+<!-- Formularz dodawania strony -->
+<form method="POST" style="margin-bottom: 2rem;">
+    {% csrf_token %}
+    <label for="address">Dodaj stronę do monitorowania:</label>
+    <input type="url" id="address" name="address" required placeholder="https://example.com" />
+    <button type="submit">Dodaj</button>
+</form>
+
+<h3>Websites we monitor for you:</h3>
+
+<table style="border-collapse: collapse; width: 100%;">
+    <thead>
+        <tr style="border-bottom: 2px solid #ccc;">
+            <th style="text-align: left; padding: 8px;">#</th>
+            <th style="text-align: left; padding: 8px;">Address</th>
+            <th style="text-align: left; padding: 8px;">Status</th>
+            <th style="text-align: left; padding: 8px;">Last checked</th>
+            <th style="text-align: left; padding: 8px;">Action</th> <!-- Nowa kolumna -->
+        </tr>
+    </thead>
+    <tbody>
+        {% for site in user_urls %}
+        <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 8px;">{{ forloop.counter }}</td>
+            <td style="padding: 8px;">{{ site.address }}</td>
+            <td style="padding: 8px;">{{ site.status }}</td>
+            <td style="padding: 8px;">
+                {% if site.last_checked %}
+                    {{ site.last_checked|date:"Y-m-d H:i" }}
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+            <!-- Ikonka do usuwania -->
+            <td style="padding: 8px;">
+                <a href="{% url 'delete_url' site.id %}"
+                   onclick="return confirm('Are you sure you want to delete this site?');">
+                   🗑
+                </a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5" style="padding: 8px; text-align: center;">
+                No sites monitored yet.
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
