@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Rejestracja</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Rejestracja nowego użytkownika</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <!--
+            UserCreationForm ma już pola username, password1, password2.
+            Tę sekcję można stylować (np. form.as_p, form.as_table itd.).
+        -->
+        {{ form.as_p }}
+
+        <button type="submit">Zarejestruj</button>
+    </form>
+
+    <!-- Link do logowania (jeśli mamy już konto) -->
+    <p>
+      Masz już konto?
+      <a href="{% url 'login' %}">Zaloguj się</a>
+    </p>
+</body>
+</html>

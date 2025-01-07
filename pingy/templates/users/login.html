@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Logowanie</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Logowanie</h1>
+
+    <!-- Formularz logowania -->
+    <form method="POST">
+        {% csrf_token %}
+        <label for="id_username">Nazwa użytkownika:</label>
+        <input type="text" name="username" id="id_username" required>
+        <br><br>
+
+        <label for="id_password">Hasło:</label>
+        <input type="password" name="password" id="id_password" required>
+        <br><br>
+
+        <button type="submit">Zaloguj</button>
+    </form>
+
+    <!-- Obsługa błędów -->
+    {% if error %}
+      <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    <!-- Link do rejestracji (jeśli nie mamy konta) -->
+    <p>
+      Nie masz konta?
+      <a href="{% url 'register' %}">Zarejestruj się</a>
+    </p>
+</body>
+</html>
