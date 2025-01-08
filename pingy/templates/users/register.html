@@ -11,16 +11,22 @@
 
     <form method="POST">
         {% csrf_token %}
-        <!--
-            UserCreationForm ma już pola username, password1, password2.
-            Tę sekcję można stylować (np. form.as_p, form.as_table itd.).
-        -->
-        {{ form.as_p }}
+
+        {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}" class="my-label-class">
+                    {{ field.label }}
+                </label>
+
+                {{ field }}
+
+                {{ field.errors }}
+            </div>
+        {% endfor %}
 
         <button type="submit">Zarejestruj</button>
     </form>
 
-    <!-- Link do logowania (jeśli mamy już konto) -->
     <p>
       Masz już konto?
       <a href="{% url 'login' %}">Zaloguj się</a>
