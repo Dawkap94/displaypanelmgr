@@ -7,29 +7,44 @@
     <link rel="stylesheet" href="{% static 'users/css/styles.css' %}">
 </head>
 <body>
-    <h1>Rejestracja nowego użytkownika</h1>
-
-    <form method="POST">
+    <div class="login_page">
+        <div class="login_form-container">
+            <h1>Pingy</h1>
+            <span class="login_welcomeText">Witamy w aplikacji Pingy!</span>
+            <span class="login_description">Zarejestruj nowe konto użytkownika</span>
+        <!-- Formularz logowania -->
+    <form method="POST" class="login_form">
         {% csrf_token %}
 
         {% for field in form %}
             <div class="form-group">
-                <label for="{{ field.id_for_label }}" class="my-label-class">
-                    {{ field.label }}
-                </label>
-
                 {{ field }}
-
-                {{ field.errors }}
+                {% if field.errors %}
+                    <ul class="errorlist">
+                        {% for error in field.errors %}
+                            {% if "This field is required" in error %}
+                                <li class="passError">
+                                    {{ error }}
+                                </li>
+                            {% else %}
+                            <li>
+                                {{ error }}
+                            </li> 
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </div>
         {% endfor %}
 
         <button type="submit">Zarejestruj</button>
     </form>
-
-    <p>
-      Masz już konto?
-      <a href="{% url 'login' %}">Zaloguj się</a>
-    </p>
+    <div class="login_registerText">
+        <span>Masz już konto?</span>
+        <a style="text-decoration: none;" href="{% url 'login' %}">
+          <span class="login_register-signUpText">Zaloguj się!</span>
+        </a>
+    </div>
+</div>
 </body>
 </html>

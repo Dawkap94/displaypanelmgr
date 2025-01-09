@@ -27,7 +27,8 @@ def register_view(request):
             return redirect('index')
     else:
         form = CustomUserCreationForm()
-
+    for field in form:
+        field.field.widget.attrs.update({'placeholder': f'{field.label}'})
     return render(request, 'users/register.html', {'form': form})
 
 def logout_view(request):

@@ -7,31 +7,30 @@
     <link rel="stylesheet" href="{% static 'users/css/styles.css' %}">
 </head>
 <body>
-    <h1>Logowanie</h1>
-
+  <div class="login_page">
+    <div class="login_form-container">
+        <h1>Pingy</h1>
+        <span class="login_welcomeText">Witamy w aplikacji Pingy!</span>
+        <span class="login_description">Zaloguj się do swojego konta</span>
     <!-- Formularz logowania -->
-    <form method="POST">
+    <form method="POST" class="login_form">
         {% csrf_token %}
-        <label for="id_username">Nazwa użytkownika:</label>
-        <input type="text" name="username" id="id_username" required>
-        <br><br>
-
-        <label for="id_password">Hasło:</label>
-        <input type="password" name="password" id="id_password" required>
-        <br><br>
-
-        <button type="submit">Zaloguj</button>
+        <input type="text" name="username" id="id_username" placeholder="E-mail" required/>
+        <input type="password" name="password" id="id_password" placeholder="Hasło"/>
+        <button type="submit">Zaloguj!</button>
+        {% if error %}
+          <p class="login_description" style="text-align: left; margin-top: 10px; color: red;">{{ error }}</p>
+        {% endif %}
     </form>
-
+    <div class="login_registerText">
+      <span>Nie masz konta?</span>
+      <a style="text-decoration: none;" href="{% url 'register' %}">
+        <span class="login_register-signUpText">Zarejestruj się!</span>
+      </a>
+  </div>
+</div>
+</div>
     <!-- Obsługa błędów -->
-    {% if error %}
-      <p style="color: red;">{{ error }}</p>
-    {% endif %}
-
-    <!-- Link do rejestracji (jeśli nie mamy konta) -->
-    <p>
-      Nie masz konta?
-      <a href="{% url 'register' %}">Zarejestruj się</a>
-    </p>
+    
 </body>
 </html>
