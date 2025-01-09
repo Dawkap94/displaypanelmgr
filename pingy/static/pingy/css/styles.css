@@ -183,3 +183,21 @@ body {
     justify-content: center;
     align-items: center;
 }
+.userPanel_btn{
+    background-color: #740698;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+
+    padding: 0 50px;
+    transition: all 0.3s;
+}
+.userPanel_btn:hover{
+    background-color: #740698dd;
+}
+.userPanel_btn:focus-within{
+    transform: scale(0.98);
+}
