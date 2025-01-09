@@ -1,39 +1,54 @@
 <!DOCTYPE html>
+{% load static %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>User panel</title>
+    <link rel="stylesheet" href="{% static 'users/css/styles.css' %}" />
 </head>
-<body>
-<h1>User panel</h1>
+<body class="body_panel">
+    {% if user.is_authenticated %}
+    <div class="loggedIn_container">
+        <span class="loggedIn_email">Welcome <span>{{ user.email }}</span> !</span>
+        <a href="{% url 'logout' %}">
+            <button class="button_logout">
+                <img src="../../static/icons/logout.png" alt="Log out" title="Log out"/>
+            </button>
+        </a>
+    </div>
+    {% endif %}
+<div class="userPanel_page">
+    <div class="userPanel_blur">
+        <h1>User panel</h1>
 
 <!-- Formularz dodawania strony -->
-<form method="POST" style="margin-bottom: 2rem;">
+<form method="POST" style="margin-bottom: 2rem; display: flex; align-items: center;">
     {% csrf_token %}
-    <label for="address">Dodaj stronę do monitorowania:</label>
+    <label for="address" class="monitoring_label">Add monitoring page:</label>
     <input type="url" id="address" name="address" required placeholder="https://example.com" />
-    <button type="submit">Dodaj</button>
+    <button type="submit">+</button>
 </form>
 
-<h3>Websites we monitor for you:</h3>
+<h3>Websites we are monitoring for you:</h3>
 
 <table style="border-collapse: collapse; width: 100%;">
     <thead>
-        <tr style="border-bottom: 2px solid #ccc;">
-            <th style="text-align: left; padding: 8px;">#</th>
-            <th style="text-align: left; padding: 8px;">Address</th>
-            <th style="text-align: left; padding: 8px;">Status</th>
-            <th style="text-align: left; padding: 8px;">Last checked</th>
-            <th style="text-align: left; padding: 8px;">Action</th> <!-- Nowa kolumna -->
+        <tr style="border-bottom: 2px solid #fff;">
+            <th style="text-align: left; padding: 12px;">#</th>
+            <th style="text-align: left; padding: 12px;">Address</th>
+            <th style="text-align: left; padding: 12px;">Status</th>
+            <th style="text-align: left; padding: 12px;">Last checked</th>
+            <th style="text-align: left; padding: 12px;">Action</th> <!-- Nowa kolumna -->
         </tr>
     </thead>
     <tbody>
         {% for site in user_urls %}
-        <tr style="border-bottom: 1px solid #ddd;">
-            <td style="padding: 8px;">{{ forloop.counter }}</td>
-            <td style="padding: 8px;">{{ site.address }}</td>
-            <td style="padding: 8px;">{{ site.status }}</td>
-            <td style="padding: 8px;">
+        <tr style="border-bottom: 1px solid #fff; color: #ffffff; font-weight: bold;">
+            <td style="padding: 12px;">{{ forloop.counter }}</td>
+            <td style="padding: 12px;">{{ site.address }}</td>
+            <td style="padding: 12px;">{{ site.status }}</td>
+            <td style="padding: 12px;">
                 {% if site.last_checked %}
                     {{ site.last_checked|date:"Y-m-d H:i" }}
                 {% else %}
@@ -41,10 +56,10 @@
                 {% endif %}
             </td>
             <!-- Ikonka do usuwania -->
-            <td style="padding: 8px;">
+            <td style="padding: 12px;">
                 <a href="{% url 'delete_url' site.id %}"
                    onclick="return confirm('Are you sure you want to delete this site?');">
-                   🗑
+                   <img src="../../static/icons/bin.png" alt="Delete" title="Delete"/>
                 </a>
             </td>
         </tr>
@@ -57,5 +72,9 @@
         {% endfor %}
     </tbody>
 </table>
+    </div>
+
+</div>
+
 </body>
 </html>

@@ -3,29 +3,29 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Logowanie</title>
+    <title>Pingy! - Sign in</title>
     <link rel="stylesheet" href="{% static 'users/css/styles.css' %}">
 </head>
 <body>
   <div class="login_page">
     <div class="login_form-container">
         <h1>Pingy</h1>
-        <span class="login_welcomeText">Witamy w aplikacji Pingy!</span>
-        <span class="login_description">Zaloguj się do swojego konta</span>
+        <span class="login_welcomeText">Welcome in the app Pingy!</span>
+        <span class="login_description">Log in to your account</span>
     <!-- Formularz logowania -->
     <form method="POST" class="login_form">
         {% csrf_token %}
         <input type="text" name="username" id="id_username" placeholder="E-mail" required/>
-        <input type="password" name="password" id="id_password" placeholder="Hasło"/>
-        <button type="submit">Zaloguj!</button>
+        <input type="password" name="password" id="id_password" placeholder="Password"/>
+        <button type="submit">Log in!</button>
         {% if error %}
           <p class="login_description" style="text-align: left; margin-top: 10px; color: red;">{{ error }}</p>
         {% endif %}
     </form>
     <div class="login_registerText">
-      <span>Nie masz konta?</span>
+      <span>You don't have an account?</span>
       <a style="text-decoration: none;" href="{% url 'register' %}">
-        <span class="login_register-signUpText">Zarejestruj się!</span>
+        <span class="login_register-signUpText">Sign up!</span>
       </a>
   </div>
 </div>

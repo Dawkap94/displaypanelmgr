@@ -8,28 +8,38 @@
     <link rel="stylesheet" href="{% static 'pingy/css/styles.css' %}">
 </head>
 <body>
-
+    <div class="main_page">
     <!-- Nagłówek, nawigacja -->
-    <header>
-        <nav>
-            <ul>
+    
                 {% if user.is_authenticated %}
-                    <p>Zalogowany jako: {{ user.email }}</p>
-                    <a href="{% url 'logout' %}">Wyloguj</a>
-                    <li><a href="{% url 'user_panel' %}">Panel użytkownika - nie działa</a></li>
+                <div class="loggedIn_container">
+                    <span class="loggedIn_email">Welcome <span>{{ user.email }}</span> !</span>
+                    <a href="{% url 'logout' %}">
+                        <button class="button_logout">
+                            <img src="../../static/icons/logout.png" alt="Log out" title="Log out"/>
+                        </button>
+                    </a>
+                </div>
+                <div>
+                    <a href="{% url 'user_panel' %}">Panel użytkownika - nie działa</a>
+                </div>
+                    
                 {% else %}
-                    <p>Niezalogowany</p>
-                    <li><a href="{% url 'login' %}">Zaloguj</a></li>
-                    <li><a href="{% url 'register' %}">Zarejestruj</a></li>
-                {% endif %}
-                -->
-            </ul>
-        </nav>
-    </header>
-
-    <footer>
-        <p>&copy; 2025 - Pingy</p>
-    </footer>
+                <div class="login_form-container loginOrRegister_container">
+                    <h1>Pingy</h1>
+                    <span class="login_welcomeText">Welcome, stranger!</span>
+                    <span class="login_description">Log in to your account or create a new one!</span>
+                    <div class="login_form">
+                        <a href="{% url 'login' %}">
+                            <button style="width: 100%">Log in!</button>
+                        </a>
+                        <a href="{% url 'register' %}">
+                            <button style="width: 100%">Register!</button>
+                        </a>
+                    </div>
+            </div>
+                {% endif %} 
+    </div>
 
 </body>
 </html>

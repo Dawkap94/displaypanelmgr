@@ -115,3 +115,159 @@ body {
     position: absolute;
     bottom: 0;
 }
+.passError{
+    position: absolute;
+    bottom: 0;
+}
+
+.main_page{
+    width: 100%;
+    height: 100%;
+}
+.main_page::after{
+    content: '';
+    background-image: url("https://wallpapers.com/images/featured/soft-aesthetic-cei80uravrnl6ltm.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.7;
+    top: 0;
+    left: 0;
+}
+.button_logout{
+    background-color: #740698;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    height: 35px;
+    width: 35px;
+    border: none;
+    border-radius: 50%;
+    transition: all 0.3s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button_logout:hover{
+    background-color: #740698cc;
+}
+.button_logout img{
+    width: 20px;
+}
+.loggedIn_container{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.loggedIn_email{
+    margin-right: 20px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+}
+.loggedIn_email span{
+    color: #740698cc;
+}
+.loginOrRegister_container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.main_footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.body_panel{
+    padding: 50px 100px 0;
+}
+.userPanel_page{
+    width: 100%;
+    height: 100%;
+    
+    
+}
+.userPanel_page::after{
+    content: '';
+    background-image: url("https://wallpapers.com/images/featured/soft-aesthetic-cei80uravrnl6ltm.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.7;
+    top: 0;
+    left: 0;
+}
+.userPanel_blur{
+    height: 80vh;
+    padding: 20px 50px;
+    margin-top: 20px;
+    background-color: #55555544;
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+}
+.userPanel_blur h1, .userPanel_blur p, .userPanel_blur th {
+    color:#740698;
+}
+.userPanel_blur h3, .monitoring_label{
+    color: #fff;
+}
+.userPanel_blur input {
+    margin: 0 10px;
+    height: 30px;
+    outline: 1px #fff solid;
+    border: none;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 14px !important;
+    background-color: transparent;
+    color: #740698;
+}
+.userPanel_blur input:focus-within{
+    outline: 1px #740698 solid;
+} 
+.userPanel_blur input::placeholder{
+    color:#fff;
+}
+.userPanel_blur button{
+    background-color: #740698;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    border: none;
+    border-radius: 50%;
+    transition: all 0.3s;
+    font-size: 21px;
+    font-weight: 100;
+
+}
+.userPanel_blur button:hover{
+    background-color: #740698dd;
+}
+.userPanel_blur button:focus-within{
+    transform: scale(0.98);
+}
+
+.userPanel_blur img{
+    filter: brightness(1) invert(0); 
+    width: 20px;
+    transition: all 0.1s;
+}
+.userPanel_blur img:hover{
+    filter: brightness(0) invert(17%) sepia(100%) saturate(700%) hue-rotate(260deg);
+}
