@@ -34,7 +34,7 @@ Przykład ekranów interfejsu:
 
 Odpalanie:
 1. pip install -r requirements.txt
-2. (w folderze gdzie jest manage.py) python manage.py runserver
+2. (w folderze gdzie jest manage.py oraz dostarczony plik .env) python manage.py runserver
 
 Testy:
-1. (w folderze gdzie jest manage.py) python mange.py test
+1. (w folderze gdzie jest manage.py) python manage.py test
